@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Organization</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock meta %}
+
+{% block content %}
+    <!-- NAVBAR START -->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light data-wow-delay container-fluid" style="position: fixed;" data-wow-delay="0.1s">
+    <div class="container">
+        <a href="{% url 'homepage:show_homepage' %}" class="navbar-brand ms-4 ms-lg-3">
+          <img src="{% static 'diary/foodybuddy.svg' %}" alt="Fooody">
+          <!-- <h1 class="fw-bold m-0" style="color:#FF9437">F<span style="color:#333">ooo</span>dy</h1> -->
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdownMenuOffset"
+          aria-controls="dropdownMenuOffset" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" style="background-color:white;" id="dropdownMenuOffset">
+    
+          <div class="navbar-nav ms-auto px-4 p-lg-0">
+            <a href="{% url 'homepage:show_homepage' %}" class="nav-item nav-link active fw-bold"
+              style="color:#F68829">Home</a>
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Tracker &nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'diary:show_diary' %}">Food Diary</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'expiry:show_expiry' %}">Expiration Tracker</a></li>
+              </ul>
+            </li>
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" >
+                Information&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+              </a>
+    
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'tips:show_tips_article' %}">Articles</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'organization:show_organization' %}">Food Waste Organizations</a></li>
+              </ul>
+            </li>
+    
+            <a href="{% url 'miniquiz:show-quiz-homepage' %}" class="nav-item nav-link">Quiz</a>
+            
+            <a href="{% url 'send_foodwaste:show_foodwaste' %}" class="nav-item nav-link">Send Food Waste</a>
+    
+            <button type="button" class="btn btn-outline"><a href="{%url 'homepage:logout' %}">Logout</a></button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </nav>
+      <!-- NAVBAR -->
+<div class="d-flex flex-wrap justify-content-start" id="organization"></div>
+<form method="POST" action="" id = "add-form">
+    {% csrf_token %}
+    <div class="center container-fluid bg">
+        <h3 class="pt-5">Food Organization </h3>
+        <p>Please fill out the information below (all fields are required)</p>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control form-control-lg" id="input_title" name="title" placeholder="Title" required>
+        <label for="input_title">Title</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="text" class="form-control form-control-sm" id="input_description" name="description" placeholder="description" required>
+        <label for="input_description">Description</label>
+    </div>
+
+    <div class="center">
+        <button class="btn login_btn bg-primary text-white" type="submit" value="Submit">Submit </button>
+    </div>
+</form>
+</div>
+
+<!--Ajax Implement for Asyncronous-->
+<script>
+  function getform() {
+      $.ajax({
+          url: "json/"
+      }).done(data => { data.forEach(value => {
+            $('#organization').append( `               
+                   <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">${value.fields.title}</h5>
+                          <p class="card-text">${value.fields.description}</p>                       
+                      <a href="#organization" class="btn btn-primary">More</a>
+              </div>
+          </div>`)
+             
+          })
+      })
+  }
+</script>
+
+<script>
+  $(document).ready(function () {
+          $("#add-form").submit(function (e) {
+              e.preventDefault()
+              $.ajax({
+                  type: "POST",
+                  url: "organization/",
+                  data:  $(this).serialize(),
+                  success: function (data) {  
+                    $("#add-form").empty();
+                      getform();
+                  }
+              });
+          })
+      })
+</script>
+{% endblock content %}

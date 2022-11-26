@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!-- NAVBAR START -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light data-wow-delay container-fluid" style="position: fixed;" data-wow-delay="0.1s">
+    <div class="container">
+        <a href="{% url 'homepage:show_homepage' %}" class="navbar-brand ms-4 ms-lg-3">
+          <img src="{% static 'diary/foodybuddy.svg' %}" alt="Fooody">
+          <!-- <h1 class="fw-bold m-0" style="color:#FF9437">F<span style="color:#333">ooo</span>dy</h1> -->
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdownMenuOffset"
+          aria-controls="dropdownMenuOffset" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" style="background-color:white;" id="dropdownMenuOffset">
+    
+          <div class="navbar-nav ms-auto px-4 p-lg-0">
+            <a href="{% url 'homepage:show_homepage' %}" class="nav-item nav-link active fw-bold"
+              style="color:#F68829">Home</a>
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Tracker &nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'diary:show_diary' %}">Food Diary</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'expiry:show_expiry' %}">Expiration Tracker</a></li>
+              </ul>
+            </li>
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" >
+                Information&nbsp;
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                </svg>
+              </a>
+    
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'tips:show_tips_article' %}">Articles</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'organization:show_organization' %}">Food Waste Organizations</a></li>
+              </ul>
+            </li>
+    
+            <a href="{% url 'miniquiz:show-quiz-homepage' %}" class="nav-item nav-link">Quiz</a>
+            
+            <a href="{% url 'send_foodwaste:show_foodwaste' %}" class="nav-item nav-link">Send Food Waste</a>
+    
+            <button type="button" class="btn btn-outline"><a href="{%url 'homepage:login' %}">Login</a></button>
+          </div>
+        </div>
+        </div>
+      </div>
+</nav>
+    <!-- NAVBAR -->
+    
+
+<section class="cta-section section-padding section-bg">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-lg-5 col-12 ms-auto">
+                <h2 class="mb-0"> Yuk, bantu orang lain untuk<br>mengelola sisa makanan<br>dengan bijak.</h2>
+            </div>
+
+            <div class="col-lg-5 col-12">
+                <h3 class="mb-0"> Login dulu untuk menambahkan artikel, ya!</h3>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
