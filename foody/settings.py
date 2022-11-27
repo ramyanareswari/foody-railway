@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,7 +16,8 @@ SECRET_KEY = 'django-insecure-jcjxm^oldzlq8d$1o4dh-^$g7bwt0@h3%zx0=2zrr$*$x)jomd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME', '')
+ALLOWED_HOSTS = [f'{HEROKU_APP_NAME}.up.railway.app']
 
 
 # Application definition
