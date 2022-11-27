@@ -1,1 +1,1 @@
- web: python manage.py migrate && gunicorn fooody.wsgi
+ web: python manage.py migrate && gunicorn foody.wsgi
