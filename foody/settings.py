@@ -64,6 +64,8 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
 
+CSRF_TRUSTED_ORIGINS = ['https://fooodybuddy.up.railway.app']
+
 ROOT_URLCONF = "foody.urls"
 
 TEMPLATES = [
