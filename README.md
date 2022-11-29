@@ -1,7 +1,7 @@
 # Foody Buddy 🗑️🚮
 
 ## App Link
-Access our app [here!](https://fooodybuddy.herokuapp.com)
+Karena free-tier Heroku habis mulai 28 November 2022, aplikasi dimigrasi ke platform Railway. Aplikasi dapat diakses [di sini!](https://fooodybuddy.up.railway.app/)
 
 ## Members
 __PBP-A Odd Semester 2022/2023__<br/>
