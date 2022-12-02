@@ -1,7 +1,5 @@
 
-from contextlib import redirect_stderr
 from django.shortcuts import redirect, render
-from django.http.response import HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotAllowed, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -48,7 +46,7 @@ def add_article(request):
                 'publish': art.publish,
                 'url' : '/tips/'
                 }
-        return HttpResponse(response)
+        return JsonResponse(response)
     return render(request, "tips.html", {'form': AddArticle()})
         
 
