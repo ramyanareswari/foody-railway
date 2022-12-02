@@ -46,7 +46,7 @@ def add_article(request):
                 'publish': art.publish,
                 'url' : '/tips/'
                 }
-        return JsonResponse(response)
+        return JsonResponse(response, status=200)
     return render(request, "tips.html", {'form': AddArticle()})
         
 
