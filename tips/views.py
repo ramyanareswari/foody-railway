@@ -1,6 +1,6 @@
 
-from django.shortcuts import redirect, render
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -50,8 +50,8 @@ def add_article(request):
         
 
 #  ==== view AJAX which returns a JSON object from json database ====
-def get_article(request):
-    tipsObj = TipsArticle.objects.filter(author = request.user)
+def get_article():
+    tipsObj = TipsArticle.objects.all()
 
     data = serializers.serialize('json', tipsObj)
     return HttpResponse(data, content_type="application/json")
