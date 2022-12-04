@@ -50,7 +50,7 @@ def add_article(request):
         
 
 #  ==== view AJAX which returns a JSON object from json database ====
-def get_article():
+def get_article(request):
     tipsObj = TipsArticle.objects.all()
 
     data = serializers.serialize('json', tipsObj)
