@@ -38,6 +38,16 @@ def add_food(request):
     else:
         return render(request, "expiry_public.html")
 
+@csrf_exempt
+def add_food_flutter(request):
+    if request.method == 'POST':
+        food_name = request.POST.get('food_name')
+        food_expired_date = request.POST.get('food_expired_date')
+        Food_Data.objects.create(user = request.user, food_name = food_name, food_expired_date = food_expired_date)
+        return JsonResponse({'status': 'success'}, status = 200)
+    else: 
+        return JsonResponse({'status': 'error'}, status = 401)
+
 def delete_food(request, id):
     if request.user.is_authenticated:
         foods = Food_Data.objects.get(user = request.user, id = id)
