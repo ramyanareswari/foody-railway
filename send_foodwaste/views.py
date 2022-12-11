@@ -6,6 +6,7 @@ from django.core import serializers
 from send_foodwaste.forms import FoodwasteForm
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -22,6 +23,7 @@ def show_foodwaste_json(request):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")  
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def add_foodwaste(request):
     if request.method == "POST":
         request.POST["expiry_date"] = datetime.strptime(request.POST["expiry_date"])
