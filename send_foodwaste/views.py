@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from send_foodwaste.forms import FoodwasteForm
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -23,6 +24,8 @@ def show_foodwaste_json(request):
 @login_required(login_url='/login/')
 def add_foodwaste(request):
     if request.method == "POST":
+        request.POST["expiry_date"] = datetime.strptime(request.POST["expiry_date"])
+        request.POST["weight"] = int(request.POST["weight"])
         # user = request.user
         # name = request.POST.get('name')
         # phone_number = request.POST.get('phone_number')
