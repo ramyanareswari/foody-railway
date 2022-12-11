@@ -46,6 +46,7 @@ def add_foodwaste(request):
         # })
         form = FoodwasteForm(request.POST)
         if form.is_valid():
+            form.instance.expiry_date = datetime.now()
             form.instance.user = request.user
             form_save = form.save()
             return JsonResponse({
