@@ -25,7 +25,6 @@ def show_foodwaste_json(request):
 @csrf_exempt
 def add_foodwaste(request):
     if request.method == "POST":
-        # request.POST["expiry_date"] = datetime.strptime(request.POST["expiry_date"], '%m-%d-%Y')
         request.POST["weight"] = int(request.POST["weight"])
         # user = request.user
         # name = request.POST.get('name')
