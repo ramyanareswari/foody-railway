@@ -158,7 +158,7 @@ window.onload = function () {
             response.score > 30
               ? "Congratulations. Your awareness level is high high up! :D"
               : "You have a low level of awareness... Take a tour on our website to get more insight!"}
-              Your score is ${response.score}%`;
+              Your score is ${response.score}`;
 
           // Looping all result and display
           results.forEach((res) => {
