@@ -17,7 +17,6 @@ def show_foodwaste(request):
     }
     return render(request, 'send_foodwaste.html', context)
 
-@login_required(login_url='/login/')
 def show_foodwaste_json(request):
     data = Send_FoodWaste_Model.objects.filter(user = request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")  
@@ -25,7 +24,7 @@ def show_foodwaste_json(request):
 @csrf_exempt
 def add_foodwaste(request):
     if request.method == "POST":
-        request.POST["weight"] = int(request.POST["weight"])
+        # request.POST["weight"] = int(request.POST["weight"])
         # user = request.user
         # name = request.POST.get('name')
         # phone_number = request.POST.get('phone_number')
