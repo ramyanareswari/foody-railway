@@ -70,14 +70,14 @@ def detail_article(request, id):
 @csrf_exempt
 def add_article_flutter(request):
     if request.method == 'POST':
-        author = request.POST.get('author')
         title = request.POST.get('title')
         content = request.POST.get('content')
         publish = request.POST.get('publish')
-        TipsArticle.objects.create(author = request.author, title=title, content = content, publish = publish)
-        return JsonResponse({'success'})
+        TipsArticle.objects.create(title=title, content = content, publish = publish)
+        return JsonResponse({'status':'success'})
     else: 
-        return JsonResponse({'error'})
-        
+        return JsonResponse({'status':'error'})
+
+
 
 
