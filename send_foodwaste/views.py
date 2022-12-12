@@ -55,6 +55,10 @@ def add_foodwaste(request):
 @login_required(login_url='/login/')
 @csrf_exempt
 def delete_foodwaste(request, pk):
+    if request.method == "POST":
+        id = request.POST.get("pk")
+        Send_FoodWaste_Model.objects.filter(pk = id).delete()
+
     if Send_FoodWaste_Model.objects.get(pk = pk).user == request.user:
         Send_FoodWaste_Model.objects.filter(pk = pk).delete()
     return redirect('send_foodwaste:show_foodwaste')
