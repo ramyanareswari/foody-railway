@@ -84,8 +84,6 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = "foody.wsgi.application"
 
 
