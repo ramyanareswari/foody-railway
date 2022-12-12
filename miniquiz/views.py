@@ -18,7 +18,7 @@ def get_quiz_model(request):
 
     return HttpResponse(data, content_type='application/json')
 
-def get_quiz_beneran(request, pk):
+def get_quiz_beneran(request, pk:int):
     quiz = QuizModel.objects.get(pk = pk)
 
     ls = []
@@ -35,7 +35,7 @@ def get_quiz_beneran(request, pk):
     # Return JsonResponse
     return HttpResponse(jsonStr, content_type='application/json')
 
-def get_question(request, pk):
+def get_question(request, pk:int):
 
     # Getting all quiz object
     quiz = QuizModel.objects.get(pk=pk)
@@ -54,7 +54,7 @@ def get_question(request, pk):
     # Return JsonResponse
     return HttpResponse(jsonStr, content_type='application/json')
 
-def get_option(request, pk, pk2) :
+def get_option(request, pk: int, pk2: int) :
 
     questions = QuestionModel.objects.get(pk=pk2)
  
@@ -71,7 +71,7 @@ def get_option(request, pk, pk2) :
     return HttpResponse(jsonStr, content_type='application/json')
 
 @csrf_exempt
-def save_assessment(request, pk):
+def save_assessment(request, pk: int):
 
     if request.method == "POST" :
         user_answers = json.loads(request.body)["answers"]
@@ -140,13 +140,13 @@ def save_assessment(request, pk):
 
 @login_required(login_url='/login/')
 # View quiz page to start the quiz
-def show_quiz_mainpage(request, pk):
+def show_quiz_mainpage(request, pk:int):
     quiz = QuizModel.objects.get(pk = pk)
     return render(request, 'quiz.html', {'obj': quiz})
 
 @login_required(login_url='/login/')
 # View quiz questions and answers in json format
-def quiz_data_view(request, pk):
+def quiz_data_view(request, pk: int):
     quiz = QuizModel.objects.get(pk = pk)
     questions = []
 
