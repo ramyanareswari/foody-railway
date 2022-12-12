@@ -78,5 +78,6 @@ def add_article_flutter(request):
         return JsonResponse({'success'})
     else: 
         return JsonResponse({'error'})
+        
 
 
