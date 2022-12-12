@@ -24,34 +24,33 @@ def show_foodwaste_json(request):
 @csrf_exempt
 def add_foodwaste(request):
     if request.method == "POST":
-        # request.POST["weight"] = int(request.POST["weight"])
-        # user = request.user
-        # name = request.POST.get('name')
-        # phone_number = request.POST.get('phone_number')
-        # address = request.POST.get('address')
-        # food_type = request.POST.get('food_type')
-        # expiry_date = request.POST.get('expiry_date')
-        # weight = request.POST.get('weight')
+        user = request.user
+        name = request.POST.get('name')
+        phone_number = request.POST.get('phone_number')
+        address = request.POST.get('address')
+        food_type = request.POST.get('food_type')
+        expiry_date = request.POST.get('expiry_date')
+        weight = request.POST.get('weight')
 
-        # new_foodwaste = Send_FoodWaste_Model(user = user, name = name, phone_number = phone_number, address = address, food_type = food_type, expiry_date = expiry_date, weight = weight)
-        # new_foodwaste.save()
-        # return JsonResponse({
-        #     'name' : name,
-        #     'phone_number' : phone_number,
-        #     'address' : address,
-        #     'food_type' : food_type,
-        #     'expiry_date' : expiry_date,
-        #     'weight' : weight
-        # })
-        form = FoodwasteForm(request.POST)
-        if form.is_valid():
-            form.instance.expiry_date = datetime.now()
-            form.instance.user = request.user
-            form_save = form.save()
-            return JsonResponse({
-                'data' : form.data,
-                'id': form_save.id
-            })
+        new_foodwaste = Send_FoodWaste_Model(user = user, name = name, phone_number = phone_number, address = address, food_type = food_type, expiry_date = expiry_date, weight = weight)
+        new_foodwaste.save()
+        return JsonResponse({
+            'name' : name,
+            'phone_number' : phone_number,
+            'address' : address,
+            'food_type' : food_type,
+            'expiry_date' : expiry_date,
+            'weight' : weight
+        })
+        # form = FoodwasteForm(request.POST)
+        # if form.is_valid():
+        #     form.instance.expiry_date = datetime.now()
+        #     form.instance.user = request.user
+        #     form_save = form.save()
+        #     return JsonResponse({
+        #         'data' : form.data,
+        #         'id': form_save.id
+        #     })
         
 @login_required(login_url='/login/')
 def delete_foodwaste(request, pk):
