@@ -205,7 +205,6 @@
 
     function showData() {
         $.get("/send_foodwaste/json/", function (data) {
-            var foods = []
             for (let i = 0; i < data.length; i++) {
                 var text = addText(data[i].fields.name, data[i].fields.address, data[i].fields.phone_number, data[i].fields.food_type, data[i].fields.expiry_date, data[i].fields.weight, data[i].pk)
                 $(text).appendTo("#foodwaste")
@@ -228,8 +227,8 @@
             data: form.serialize(),
             success: function (data) {
                 console.log(data)
-                var text = addText(data.data.name, data.data.address, data.data.phone_number, data.data.food_type, data.data.expiry_date, data.data.weight, data.id)
-                $(text).appendTo("#foodwaste")
+                $('#foodwaste').html("")
+                showData()
                 $("#modalFoodwaste").modal('hide')
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
