@@ -67,4 +67,16 @@ def detail_article(request, id):
 
     return render(request, 'detail.html', context)
 
+@csrf_exempt
+def add_article_flutter(request):
+    if request.method == 'POST':
+        author = request.POST.get('author')
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        publish = request.POST.get('publish')
+        TipsArticle.objects.create(author = request.author, title=title, content = content, publish = publish)
+        return JsonResponse({'success'})
+    else: 
+        return JsonResponse({'error'})
+
 

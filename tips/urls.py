@@ -9,4 +9,6 @@ urlpatterns = [
     path('add-article/', add_article, name='add_article'),
     path('json/', get_article, name='get_article'),
     path('<id>/', detail_article, name='detail_article'),
+
+    path('add-article-flutter/', add_article_flutter, name='add_article_flutter'),
 ]
