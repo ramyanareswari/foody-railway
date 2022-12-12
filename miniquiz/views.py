@@ -70,7 +70,6 @@ def get_option(request, pk: int, pk2: int) :
     # Return JsonResponse
     return HttpResponse(jsonStr, content_type='application/json')
 
-@csrf_exempt
 def save_assessment(request, pk: int):
 
     if request.method == "POST" :
