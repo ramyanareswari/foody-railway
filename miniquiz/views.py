@@ -11,6 +11,7 @@ def show_quiz_homepage(request):
     quiz = QuizModel.objects.all()
     return render(request, 'main.html', {'quizs' : quiz})
 
+@csrf_exempt
 def get_quiz_model(request):
     quiz = QuizModel.objects.all()
    
