@@ -58,6 +58,7 @@ def delete_foodwaste(request, pk):
     if request.method == "POST":
         id = request.POST.get("pk")
         Send_FoodWaste_Model.objects.filter(pk = id).delete()
+        return JsonResponse()
 
     if Send_FoodWaste_Model.objects.get(pk = pk).user == request.user:
         Send_FoodWaste_Model.objects.filter(pk = pk).delete()
