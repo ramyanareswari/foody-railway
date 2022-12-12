@@ -79,15 +79,18 @@ def register_flutter(request):
         username = data["username"]
         email = data["email"]
         password1 = data["password1"]
+        password2 = data["password2"]
 
-        new_user = UserModel.objects.create_user(
-        username = username, 
-        email = email,
-        password = password1,
-        )
-
-        new_user.save()
-        return JsonResponse({"status": "success"}, status=200)
+        if password1 != password2:
+            return JsonResponse({"status": "error"}, status=401)
+        else:
+            new_user = UserModel.objects.create_user(
+            username = username, 
+            email = email,
+            password1 = password1,
+            )
+            new_user.save()
+            return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
 
