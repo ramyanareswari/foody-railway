@@ -19,6 +19,7 @@ def get_quiz_model(request):
 
     return HttpResponse(data, content_type='application/json')
 
+@csrf_exempt
 def get_quiz_beneran(request, pk:int):
     quiz = QuizModel.objects.get(pk = pk)
 
@@ -36,6 +37,7 @@ def get_quiz_beneran(request, pk:int):
     # Return JsonResponse
     return HttpResponse(jsonStr, content_type='application/json')
 
+@csrf_exempt
 def get_question(request, pk:int):
 
     # Getting all quiz object
@@ -55,6 +57,7 @@ def get_question(request, pk:int):
     # Return JsonResponse
     return HttpResponse(jsonStr, content_type='application/json')
 
+@csrf_exempt
 def get_option(request, pk: int, pk2: int) :
 
     questions = QuestionModel.objects.get(pk=pk2)
