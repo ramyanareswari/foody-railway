@@ -15,7 +15,6 @@ def show_quiz_mainpage(request, pk):
     quiz = QuizModel.objects.get(pk = pk)
     return render(request, 'quiz.html', {'obj': quiz})
 
-@login_required(login_url='/login/')
 # View quiz questions and answers in json format
 def show_quiz_json(request, pk):
     quiz = QuizModel.objects.get(pk = pk)
