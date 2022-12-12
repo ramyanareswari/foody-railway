@@ -92,12 +92,8 @@ WSGI_APPLICATION = "foody.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'drbOQJ6BtF6EUJwXHsSW',
-        'HOST': 'containers-us-west-104.railway.app',
-        'PORT': '6064', 
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
