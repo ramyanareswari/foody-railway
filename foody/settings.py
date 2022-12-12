@@ -84,6 +84,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = "foody.wsgi.application"
 
 
@@ -92,12 +94,8 @@ WSGI_APPLICATION = "foody.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'drbOQJ6BtF6EUJwXHsSW',
-        'HOST': 'containers-us-west-104.railway.app',
-        'PORT': '6064', 
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -163,3 +161,4 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
