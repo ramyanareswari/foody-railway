@@ -13,6 +13,6 @@ urlpatterns = [
     path('get-quiz-model/<pk>/save', save_assessment, name='save-assessment'),
 
     path('<int:pk>/', show_quiz_mainpage, name='show-quiz-mainpage'),
-    path('<pk>/data/', quiz_data_view, name='quiz-data-view'),
-    path('<pk>/save', save_quiz, name='save-quiz'),
+    path('<int:pk>/data/', quiz_data_view, name='quiz-data-view'),
+    path('<int:pk>/save', save_quiz, name='save-quiz'),
 ]
